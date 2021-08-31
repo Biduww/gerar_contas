@@ -56,12 +56,11 @@ navegador.execute_script(
 
 navegador.switch_to_window('thirdtab') # troca pra aba do e-mail
 
-time.sleep(10) # Delay
+time.sleep(8) # Delay
 navegador.find_element_by_xpath(
     '//*[@id="tm-body"]/div[1]/div/div/div[2]/div[1]/form/div[2]/button').click()
-#email = navegador.find_element_by_xpath('//*[@id="mail"]').text
 
-time.sleep(4)
+time.sleep(1)
 
 navegador.switch_to_window('secondtab') # volta pra aba de sing-up
 
@@ -72,7 +71,7 @@ navegador.find_element_by_xpath(
 
 act.key_down(keys.Keys.CONTROL).send_keys('v').key_up(keys.Keys.CONTROL).perform()
 
-time.sleep(5)
+time.sleep(2)
 email = navegador.find_element_by_xpath(
     '//*[@id="root"]/div/div[1]/div[2]/input[3]').get_attribute('value')
 
@@ -80,9 +79,22 @@ email = navegador.find_element_by_xpath(
 
 navegador.find_element_by_xpath('//*[@id="root"]/div/div[1]/div[2]/a[3]').click()
 
+# Pular os primeiros passos
+time.sleep(3)
+navegador.find_element_by_xpath(
+    '//*[@id="root"]/div/div/div[2]/div[2]/div/button').click()
+
+time.sleep(1)
+navegador.find_element_by_xpath(
+    '//*[@id="root"]/div/div/div[2]/div[2]/div/button').click()
+
+time.sleep(1)
+navegador.find_element_by_xpath(
+    '//*[@id="root"]/div/div/div[2]/div[2]/div[1]/a[1]/button').click()
+
 # Guardar os dados em um arquivo, para o fácil acesso
 
 with open('info.txt', 'a', newline='') as arquivo:
-    arquivo.write(f"email: {email}, senha: {password}   ")
+    arquivo.write(f"\n email: {email}, senha: {password}\n")
 
 
